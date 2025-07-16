@@ -31,7 +31,7 @@ void serialSetup() {
 void setup() {
   // put your setup code here, to run once:
   stepper.setMaxSpeed(round(SIDEREAL_STEPS_PER_SEC)); // max steps/sec
-  stepper.setSpeed(-SIDEREAL_STEPS_PER_SEC); // negative for counterclockwise rotation
+  stepper.setSpeed(SIDEREAL_STEPS_PER_SEC);
 
   serialSetup();
   Serial.println("Star Tracker RA Motor Control Initialized.");
@@ -39,7 +39,7 @@ void setup() {
   Serial.print("setMaxSpeed: ");
   Serial.println(round(SIDEREAL_STEPS_PER_SEC));
   Serial.print("setSpeed: ");
-  Serial.println(-SIDEREAL_STEPS_PER_SEC);
+  Serial.println(SIDEREAL_STEPS_PER_SEC);
   Serial.print("Total steps per motor revolution: ");
   Serial.println(MOTOR_STEPS_PER_REV);
   Serial.print("Total microsteps per motor revolution: ");
@@ -57,7 +57,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-  // Move counterclockwise at sidereal rate
+  // Move at sidereal rate
   stepper.runSpeed(); // run at constant speed
   // The runSpeed() function will keep the motor moving at the set speed
   // It does not block, allowing other code to run if needed
